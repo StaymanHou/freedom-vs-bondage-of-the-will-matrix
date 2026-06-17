@@ -1,0 +1,250 @@
+You cannot directly click an "export" button to download the widget we just used, as it is dynamically rendered specifically for our chat interface.
+
+However, your idea to host this on a GitHub page is fantastic! It would be an excellent resource for students of theology. To make that happen, I have written the complete, standalone code for this Theological Matrix Explorer.
+
+Below is a single `index.html` file that contains all the structure, styling, and logic needed. You can copy this code, save it, and it will work perfectly on GitHub Pages without needing any complex build tools or servers.
+
+### How to host this on GitHub Pages:
+
+1. Create a new repository on GitHub (e.g., `theological-matrix`).
+2. Create a file named `index.html` in that repository.
+3. Paste the code below into `index.html` and commit the changes.
+4. Go to your repository **Settings** > **Pages**.
+5. Under "Source", select the `main` branch and click **Save**.
+6. Within a few minutes, your site will be live!
+
+### The Code (`index.html`)
+
+Here is the complete code. I have populated the core data structure for you. *(Note: To keep the code manageable here, I have filled in the data for the "Reformed" and "Arminian" systems. You can easily add the text for Pelagianism and Semi-Pelagianism in the `theologicalData` object at the top of the script!)*
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theological Matrix Explorer</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 { text-align: center; color: #2c3e50; }
+        .controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 8px;
+        }
+        select, button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            table-layout: fixed;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Theological Matrix Explorer</h1>
+    
+    <div class="controls">
+        <div>
+            <label for="viewMode"><strong>View Mode:</strong></label>
+            <select id="viewMode" onchange="updateContextDropdown()">
+                <option value="system">Slice by System (Worldview)</option>
+                <option value="event">Slice by Event (Debate)</option>
+                <option value="agent">Slice by Agent (Anthropology)</option>
+            </select>
+        </div>
+        <div>
+            <label for="contextSelect"><strong>Select Context:</strong></label>
+            <select id="contextSelect" onchange="renderTable()"></select>
+        </div>
+    </div>
+
+    <div id="tableContainer"></div>
+</div>
+
+<script>
+    // --- DATA DEFINITIONS ---
+    const systems = ["Pelagianism", "Semi-Pelagianism", "Arminianism", "Reformed"];
+    const agents = ["Adam (Pre-Fall)", "Jesus Christ", "Unregenerate Man", "Regenerate Man"];
+    const events = ["The Fall", "The Cross", "Conversion", "Outward Deeds", "Heart Motive"];
+
+    // 3D Data Structure: data[system][agent][event]
+    const theologicalData = {
+        "Reformed": {
+            "Adam (Pre-Fall)": {
+                "The Fall": "Acted as federal head; possessed free will but chose rebellion.",
+                "The Cross": "His rebellion made the Cross necessary.",
+                "Conversion": "N/A - Created in perfect fellowship.",
+                "Outward Deeds": "Able to do pure good.",
+                "Heart Motive": "Able to act purely for God's glory."
+            },
+            "Jesus Christ": {
+                "The Fall": "The unfallen Second Adam.",
+                "The Cross": "Willingly chose the Cross to secure redemption.",
+                "Conversion": "N/A - Never sinned.",
+                "Outward Deeds": "Perfectly righteous.",
+                "Heart Motive": "Perfectly aligned with the Father's will."
+            },
+            "Unregenerate Man": {
+                "The Fall": "Guilty by imputation; totally depraved.",
+                "The Cross": "Acted wickedly (e.g., Judas), fulfilling God's sovereign plan.",
+                "Conversion": "Utterly incapable; spiritually dead. Requires irresistible grace.",
+                "Outward Deeds": "Capable of civil righteousness (e.g., charity).",
+                "Heart Motive": "Incapable of pleasing God; all deeds tainted by self-justification."
+            },
+            "Regenerate Man": {
+                "The Fall": "Redeemed from guilt, though flesh remains.",
+                "The Cross": "The grateful beneficiary of effectual atonement.",
+                "Conversion": "Willingly converted because God changed their heart.",
+                "Outward Deeds": "Able to do good works.",
+                "Heart Motive": "Able to act out of genuine love for God, though imperfectly."
+            }
+        },
+        "Arminianism": {
+            "Adam (Pre-Fall)": {
+                "The Fall": "Created with free will; chose to sin.",
+                "The Cross": "His fall necessitated the Cross.",
+                "Conversion": "N/A",
+                "Outward Deeds": "Able to choose good.",
+                "Heart Motive": "Able to love God purely."
+            },
+            "Jesus Christ": {
+                "The Fall": "The Second Adam.",
+                "The Cross": "Died to make salvation possible for all men.",
+                "Conversion": "N/A",
+                "Outward Deeds": "Perfectly holy.",
+                "Heart Motive": "Perfectly holy."
+            },
+            "Unregenerate Man": {
+                "The Fall": "Inherited corrupted nature (total depravity).",
+                "The Cross": "Acted voluntarily in the crucifixion.",
+                "Conversion": "Incapable naturally, BUT enabled by universal prevenient grace to freely choose or reject God.",
+                "Outward Deeds": "Capable of civil good.",
+                "Heart Motive": "Requires grace to genuinely seek God."
+            },
+            "Regenerate Man": {
+                "The Fall": "Redeemed by freely accepting grace.",
+                "The Cross": "Beneficiary of the atonement.",
+                "Conversion": "Freely cooperated with God's grace.",
+                "Outward Deeds": "Empowered to live holy lives.",
+                "Heart Motive": "Empowered to love God truly."
+            }
+        }
+        // Note: You can add the "Pelagianism" and "Semi-Pelagianism" objects here following the exact same structure!
+    };
+
+    // --- LOGIC ---
+    function updateContextDropdown() {
+        const mode = document.getElementById('viewMode').value;
+        const contextSelect = document.getElementById('contextSelect');
+        contextSelect.innerHTML = ''; // Clear options
+
+        let options = [];
+        if (mode === 'system') options = systems;
+        else if (mode === 'event') options = events;
+        else if (mode === 'agent') options = agents;
+
+        options.forEach(opt => {
+            const el = document.createElement('option');
+            el.value = opt;
+            el.textContent = opt;
+            contextSelect.appendChild(el);
+        });
+        
+        renderTable();
+    }
+
+    function renderTable() {
+        const mode = document.getElementById('viewMode').value;
+        const context = document.getElementById('contextSelect').value;
+        const container = document.getElementById('tableContainer');
+        
+        let html = '<table><thead><tr><th></th>';
+
+        if (mode === 'system') {
+            events.forEach(e => html += `<th>${e}</th>`);
+            html += '</tr></thead><tbody>';
+            agents.forEach(agent => {
+                html += `<tr><td><strong>${agent}</strong></td>`;
+                events.forEach(event => {
+                    const cellData = theologicalData[context]?.[agent]?.[event] || "Data to be added.";
+                    html += `<td>${cellData}</td>`;
+                });
+                html += '</tr>';
+            });
+        } 
+        else if (mode === 'event') {
+            systems.forEach(s => html += `<th>${s}</th>`);
+            html += '</tr></thead><tbody>';
+            agents.forEach(agent => {
+                html += `<tr><td><strong>${agent}</strong></td>`;
+                systems.forEach(system => {
+                    const cellData = theologicalData[system]?.[agent]?.[context] || "Data to be added.";
+                    html += `<td>${cellData}</td>`;
+                });
+                html += '</tr>';
+            });
+        }
+        else if (mode === 'agent') {
+            events.forEach(e => html += `<th>${e}</th>`);
+            html += '</tr></thead><tbody>';
+            systems.forEach(system => {
+                html += `<tr><td><strong>${system}</strong></td>`;
+                events.forEach(event => {
+                    const cellData = theologicalData[system]?.[context]?.[event] || "Data to be added.";
+                    html += `<td>${cellData}</td>`;
+                });
+                html += '</tr>';
+            });
+        }
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+    }
+
+    // Initialize on load
+    updateContextDropdown();
+</script>
+
+</body>
+</html>
+
+```
