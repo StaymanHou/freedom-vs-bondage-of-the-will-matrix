@@ -81,77 +81,30 @@
 </div>
 
 <script>
-    // --- DATA DEFINITIONS ---
-    const systems = ["Pelagianism", "Semi-Pelagianism", "Arminianism", "Reformed"];
+    const systems = ["Pelagianism", "Semi-Pelagianism", "Arminianism", "Reformed", "Neo-Orthodoxy", "Theology of Hope"];
     const agents = ["Adam (Pre-Fall)", "Jesus Christ", "Unregenerate Man", "Regenerate Man"];
     const events = ["The Fall", "The Cross", "Conversion", "Outward Deeds", "Heart Motive"];
 
-    // 3D Data Structure: data[system][agent][event]
-    const theologicalData = {
-        "Reformed": {
-            "Adam (Pre-Fall)": {
-                "The Fall": "Acted as federal head; possessed free will but chose rebellion.",
-                "The Cross": "His rebellion made the Cross necessary.",
-                "Conversion": "N/A - Created in perfect fellowship.",
-                "Outward Deeds": "Able to do pure good.",
-                "Heart Motive": "Able to act purely for God's glory."
-            },
-            "Jesus Christ": {
-                "The Fall": "The unfallen Second Adam.",
-                "The Cross": "Willingly chose the Cross to secure redemption.",
-                "Conversion": "N/A - Never sinned.",
-                "Outward Deeds": "Perfectly righteous.",
-                "Heart Motive": "Perfectly aligned with the Father's will."
-            },
-            "Unregenerate Man": {
-                "The Fall": "Guilty by imputation; totally depraved.",
-                "The Cross": "Acted wickedly (e.g., Judas), fulfilling God's sovereign plan.",
-                "Conversion": "Utterly incapable; spiritually dead. Requires irresistible grace.",
-                "Outward Deeds": "Capable of civil righteousness (e.g., charity).",
-                "Heart Motive": "Incapable of pleasing God; all deeds tainted by self-justification."
-            },
-            "Regenerate Man": {
-                "The Fall": "Redeemed from guilt, though flesh remains.",
-                "The Cross": "The grateful beneficiary of effectual atonement.",
-                "Conversion": "Willingly converted because God changed their heart.",
-                "Outward Deeds": "Able to do good works.",
-                "Heart Motive": "Able to act out of genuine love for God, though imperfectly."
-            }
-        },
-        "Arminianism": {
-            "Adam (Pre-Fall)": {
-                "The Fall": "Created with free will; chose to sin.",
-                "The Cross": "His fall necessitated the Cross.",
-                "Conversion": "N/A",
-                "Outward Deeds": "Able to choose good.",
-                "Heart Motive": "Able to love God purely."
-            },
-            "Jesus Christ": {
-                "The Fall": "The Second Adam.",
-                "The Cross": "Died to make salvation possible for all men.",
-                "Conversion": "N/A",
-                "Outward Deeds": "Perfectly holy.",
-                "Heart Motive": "Perfectly holy."
-            },
-            "Unregenerate Man": {
-                "The Fall": "Inherited corrupted nature (total depravity).",
-                "The Cross": "Acted voluntarily in the crucifixion.",
-                "Conversion": "Incapable naturally, BUT enabled by universal prevenient grace to freely choose or reject God.",
-                "Outward Deeds": "Capable of civil good.",
-                "Heart Motive": "Requires grace to genuinely seek God."
-            },
-            "Regenerate Man": {
-                "The Fall": "Redeemed by freely accepting grace.",
-                "The Cross": "Beneficiary of the atonement.",
-                "Conversion": "Freely cooperated with God's grace.",
-                "Outward Deeds": "Empowered to live holy lives.",
-                "Heart Motive": "Empowered to love God truly."
-            }
-        }
-        // Note: You can add the "Pelagianism" and "Semi-Pelagianism" objects here following the exact same structure!
-    };
+    let theologicalData = {};
 
-    // --- LOGIC ---
+    // FETCH THE DATA FROM THE JSON FILE
+    fetch('data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok. Ensure data.json is in the same folder.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            theologicalData = data;
+            // Only initialize the dropdowns and table AFTER data is loaded
+            updateContextDropdown(); 
+        })
+        .catch(error => {
+            document.getElementById('tableContainer').innerHTML = `<p style="color:red; text-align:center;">Error loading data: ${error.message}</p>`;
+            console.error('Error fetching data:', error);
+        });
+
     function updateContextDropdown() {
         const mode = document.getElementById('viewMode').value;
         const contextSelect = document.getElementById('contextSelect');
@@ -173,6 +126,9 @@
     }
 
     function renderTable() {
+        // Prevent rendering if data hasn't loaded yet
+        if (Object.keys(theologicalData).length === 0) return; 
+
         const mode = document.getElementById('viewMode').value;
         const context = document.getElementById('contextSelect').value;
         const container = document.getElementById('tableContainer');
@@ -185,7 +141,7 @@
             agents.forEach(agent => {
                 html += `<tr><td><strong>${agent}</strong></td>`;
                 events.forEach(event => {
-                    const cellData = theologicalData[context]?.[agent]?.[event] || "Data to be added.";
+                    const cellData = theologicalData[context]?.[agent]?.[event] || "No data.";
                     html += `<td>${cellData}</td>`;
                 });
                 html += '</tr>';
@@ -197,7 +153,7 @@
             agents.forEach(agent => {
                 html += `<tr><td><strong>${agent}</strong></td>`;
                 systems.forEach(system => {
-                    const cellData = theologicalData[system]?.[agent]?.[context] || "Data to be added.";
+                    const cellData = theologicalData[system]?.[agent]?.[context] || "No data.";
                     html += `<td>${cellData}</td>`;
                 });
                 html += '</tr>';
@@ -209,7 +165,7 @@
             systems.forEach(system => {
                 html += `<tr><td><strong>${system}</strong></td>`;
                 events.forEach(event => {
-                    const cellData = theologicalData[system]?.[context]?.[event] || "Data to be added.";
+                    const cellData = theologicalData[system]?.[context]?.[event] || "No data.";
                     html += `<td>${cellData}</td>`;
                 });
                 html += '</tr>';
@@ -219,9 +175,6 @@
         html += '</tbody></table>';
         container.innerHTML = html;
     }
-
-    // Initialize on load
-    updateContextDropdown();
 </script>
 
 </body>
