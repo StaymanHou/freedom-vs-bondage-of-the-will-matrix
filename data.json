@@ -1,0 +1,182 @@
+{
+  "Pelagianism": {
+    "Adam (Pre-Fall)": {
+      "The Fall": "Created morally neutral. His fall only provided a bad example; it did not corrupt human nature.",
+      "The Cross": "Not an atoning sacrifice for original sin, but the ultimate moral example of perfect obedience.",
+      "Conversion": "N/A - Adam was created with the capacity to live perfectly.",
+      "Outward Deeds": "Fully capable of choosing perfect good by natural free will.",
+      "Heart Motive": "Capable of pure motives without needing internal grace."
+    },
+    "Jesus Christ": {
+      "The Fall": "Unaffected; came to reverse Adam's bad example with a perfect example.",
+      "The Cross": "A demonstration of perfect love and obedience for humanity to imitate.",
+      "Conversion": "N/A - Lived a perfectly sinless life.",
+      "Outward Deeds": "Perfectly righteous example.",
+      "Heart Motive": "Perfectly pure."
+    },
+    "Unregenerate Man": {
+      "The Fall": "Born exactly as Adam was before the fall: a blank slate with total free will. No original sin.",
+      "The Cross": "Beneficiary only in the sense of having a supreme moral example to follow.",
+      "Conversion": "Fully capable of choosing God and converting by their own natural free will. Grace is merely helpful instruction.",
+      "Outward Deeds": "Can achieve sinless perfection strictly through natural willpower.",
+      "Heart Motive": "Capable of generating pure love for God without supernatural intervention."
+    },
+    "Regenerate Man": {
+      "The Fall": "Saved by successfully imitating Christ rather than imitating Adam.",
+      "The Cross": "Looks to the cross as the ultimate guide for moral living.",
+      "Conversion": "Converted by making a rational, unaided choice to obey God's law.",
+      "Outward Deeds": "Follows the law and Christ's example.",
+      "Heart Motive": "Chooses to act purely out of natural capacity."
+    }
+  },
+  "Semi-Pelagianism": {
+    "Adam (Pre-Fall)": {
+      "The Fall": "Created good, but his fall severely injured and weakened human nature.",
+      "The Cross": "His fall necessitated Christ's intervention.",
+      "Conversion": "N/A",
+      "Outward Deeds": "Able to choose perfect good before the fall.",
+      "Heart Motive": "Able to act purely for God before the fall."
+    },
+    "Jesus Christ": {
+      "The Fall": "The unfallen Savior who brings necessary grace to a wounded humanity.",
+      "The Cross": "Died to provide the grace necessary to complete human salvation.",
+      "Conversion": "N/A",
+      "Outward Deeds": "Perfectly righteous.",
+      "Heart Motive": "Perfectly aligned with God."
+    },
+    "Unregenerate Man": {
+      "The Fall": "Inherits a sick and deeply wounded nature, but the will is not totally dead.",
+      "The Cross": "Needs the cross to be saved, but must take the first step toward it.",
+      "Conversion": "Retains a tiny sliver of natural free will. Man makes the first move to seek God, and God responds with grace.",
+      "Outward Deeds": "Can perform some civil good, but needs grace to complete it.",
+      "Heart Motive": "Cannot purify the heart entirely, but can naturally desire to be healed."
+    },
+    "Regenerate Man": {
+      "The Fall": "Healed from the sickness of the fall through cooperative grace.",
+      "The Cross": "Saved by grace, which they actively cooperated with.",
+      "Conversion": "Synergistically partnered with God; grace was necessary, but human choice was the decisive factor.",
+      "Outward Deeds": "Cooperates with grace to live a moral life.",
+      "Heart Motive": "Desires God, sustained by a partnership of grace and free will."
+    }
+  },
+  "Arminianism": {
+    "Adam (Pre-Fall)": {
+      "The Fall": "Created with true free will; freely chose to rebel.",
+      "The Cross": "His rebellion made the atonement necessary.",
+      "Conversion": "N/A",
+      "Outward Deeds": "Able to choose good.",
+      "Heart Motive": "Able to love God purely."
+    },
+    "Jesus Christ": {
+      "The Fall": "The Second Adam who provides a remedy for total depravity.",
+      "The Cross": "Died for all humanity (Universal Atonement) to make salvation possible for everyone.",
+      "Conversion": "N/A",
+      "Outward Deeds": "Perfectly holy.",
+      "Heart Motive": "Perfectly holy."
+    },
+    "Unregenerate Man": {
+      "The Fall": "Inherits total depravity; naturally spiritually dead and completely bound to sin.",
+      "The Cross": "Christ died for them, but the benefit is not applied until they believe.",
+      "Conversion": "Naturally incapable, BUT God gives 'prevenient grace' to all, supernaturally restoring free will so they can choose to accept or reject the Gospel.",
+      "Outward Deeds": "Capable of civil good, but only by common grace.",
+      "Heart Motive": "Cannot genuinely seek God without the universal gift of prevenient grace."
+    },
+    "Regenerate Man": {
+      "The Fall": "Redeemed by freely accepting God's offered grace.",
+      "The Cross": "Beneficiary of the atonement through the instrument of free faith.",
+      "Conversion": "Freely cooperated with God's grace; their choice was the deciding factor. They can potentially fall away (apostasy).",
+      "Outward Deeds": "Empowered by the Spirit to live holy lives.",
+      "Heart Motive": "Empowered to love God truly, though perfection is debated."
+    }
+  },
+  "Reformed": {
+    "Adam (Pre-Fall)": {
+      "The Fall": "Acted as federal head; possessed free will but voluntarily chose rebellion.",
+      "The Cross": "His rebellion made the Cross necessary.",
+      "Conversion": "N/A - Created in perfect fellowship.",
+      "Outward Deeds": "Able to do pure good.",
+      "Heart Motive": "Able to act purely for God's glory."
+    },
+    "Jesus Christ": {
+      "The Fall": "The unfallen Second Adam.",
+      "The Cross": "Died specifically to secure the salvation of the elect (Definite/Limited Atonement).",
+      "Conversion": "N/A - Never sinned.",
+      "Outward Deeds": "Perfectly righteous.",
+      "Heart Motive": "Perfectly aligned with the Father's will."
+    },
+    "Unregenerate Man": {
+      "The Fall": "Guilty by imputation; totally depraved and spiritually dead.",
+      "The Cross": "Acted wickedly (e.g., Judas), fulfilling God's sovereign plan voluntarily.",
+      "Conversion": "Utterly incapable. Requires irresistible, monergistic grace to resurrect their dead heart so they can believe.",
+      "Outward Deeds": "Capable of civil righteousness (e.g., charity) in the horizontal realm.",
+      "Heart Motive": "Incapable of pleasing God; all deeds tainted by the sin of self-justification."
+    },
+    "Regenerate Man": {
+      "The Fall": "Redeemed from guilt, though the flesh remains to be battled.",
+      "The Cross": "The guaranteed beneficiary of effectual atonement.",
+      "Conversion": "Willingly converted ONLY because God first changed their nature.",
+      "Outward Deeds": "Freed to do genuinely good works.",
+      "Heart Motive": "Able to act out of genuine love for God, free from the need to earn salvation."
+    }
+  },
+  "Neo-Orthodoxy": {
+    "Adam (Pre-Fall)": {
+      "The Fall": "A theological saga/myth representing the universal human reality of rejecting God's grace.",
+      "The Cross": "N/A - Adam represents the human condition that the Cross addresses.",
+      "Conversion": "N/A",
+      "Outward Deeds": "Represents humanity's attempt to live autonomously.",
+      "Heart Motive": "Represents humanity's inherent pride."
+    },
+    "Jesus Christ": {
+      "The Fall": "The true center of history; humanity is defined by Christ, not Adam.",
+      "The Cross": "Christ is both the Electing God and the only truly Reprobate (damned) Man, taking all rejection upon Himself.",
+      "Conversion": "The objective reality of all human salvation is found exclusively in Him.",
+      "Outward Deeds": "The only true obedience.",
+      "Heart Motive": "The perfect 'Yes' to God."
+    },
+    "Unregenerate Man": {
+      "The Fall": "Lives in the impossible illusion of being separated from God.",
+      "The Cross": "Already objectively reconciled to God at the Cross, but does not know it yet.",
+      "Conversion": "Not a change of eternal status, but the subjective awakening to the reality that they are already elect in Christ.",
+      "Outward Deeds": "Can do moral good, but lives in an ontological lie.",
+      "Heart Motive": "Blind to the grace that already defines their existence."
+    },
+    "Regenerate Man": {
+      "The Fall": "Freed from the illusion of the Fall.",
+      "The Cross": "Lives in joyful gratitude for the objective triumph of the Cross.",
+      "Conversion": "Has had their eyes opened to the reality of their election in Christ.",
+      "Outward Deeds": "Actions reflect gratitude for accomplished grace.",
+      "Heart Motive": "Motivated by the joyous knowledge of God's 'Yes' to humanity."
+    }
+  },
+  "Theology of Hope": {
+    "Adam (Pre-Fall)": {
+      "The Fall": "Represents humanity trapped in self-estrangement and the status quo of the past.",
+      "The Cross": "N/A",
+      "Conversion": "N/A",
+      "Outward Deeds": "Represents life without eschatological direction.",
+      "Heart Motive": "Represents a heart closed off to God's future."
+    },
+    "Jesus Christ": {
+      "The Fall": "The one who breaks the cycle of history and opens the future.",
+      "The Cross": "The Crucified God; God takes godforsakenness and suffering into His own being in absolute solidarity with the oppressed.",
+      "Conversion": "N/A",
+      "Outward Deeds": "Active solidarity with the marginalized.",
+      "Heart Motive": "Perfect love expressed through suffering."
+    },
+    "Unregenerate Man": {
+      "The Fall": "Trapped in the 'hell of self-estrangement' and closed off to the future.",
+      "The Cross": "The object of God's solidarity in their suffering and oppression.",
+      "Conversion": "Paralyzed not just by moral failure, but by hopelessness, apathy, and resignation to the world's suffering.",
+      "Outward Deeds": "Accepts the unjust status quo of the world.",
+      "Heart Motive": "Suffers from the sin of despair and lack of hope."
+    },
+    "Regenerate Man": {
+      "The Fall": "Liberated from the past to become a participant in God's coming future.",
+      "The Cross": "Finds freedom in the resurrection breaking into the present reality.",
+      "Conversion": "Liberated by eschatological hope to stop accepting suffering and start transforming the world.",
+      "Outward Deeds": "Active in ministering, suffering with others, and fighting for systemic justice.",
+      "Heart Motive": "Driven by the hope of the coming Kingdom of God."
+    }
+  }
+}
